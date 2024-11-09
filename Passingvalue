@@ -1,36 +1,65 @@
 package demo;
 
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class Valuepass {
 
 	public static void main(String[] args) {
-		
+		// TODO Auto-generated method stub
 		
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Pfanandh\\Downloads\\chromedriver-win32\\chromedriver-win32\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
+		
+		//opening website
 		driver.get("https://demo.automationtesting.in/Register.html");
+		
+		//filling name and email field
 	    driver.findElement(By.cssSelector("input[placeholder='First Name']")).sendKeys("Anandhu");
 	    driver.findElement(By.cssSelector("input[placeholder='Last Name']")).sendKeys("Purushan");
 	    driver.findElement(By.cssSelector("textarea[rows='3']")).sendKeys("bogainvillae");
 	    driver.findElement(By.cssSelector("input[type='email']")).sendKeys("anandhu@gmail.com");
 	    driver.findElement(By.cssSelector("input[type='tel']")).sendKeys("1234567");
+	    
+	    //handling check box
 	    driver.findElement(By.cssSelector("input[value='Male']")).click();
 	    driver.findElement(By.id("checkbox1")).click();
 	    driver.findElement(By.id("checkbox2")).click();
+	    
+	    //Selecting value from dropdown
 	    driver.findElement(By.id("msdd")).click();
 	    driver.findElement(By.xpath("//a[text()='Catalan']")).click();
 	    driver.findElement(By.xpath("//a[text()='English']")).click();
 	    driver.findElement(By.xpath("//a[text()='Danish']")).click();
-      driver.findElement(By.cssSelector("select[ng-model='Skill']")).click();
-		//driver.findElement(By)
+	    driver.findElement(By.id("msdd")).submit();
 	    
+	    //selecting value from dropdown
+	    Select dropdown0 = new Select(driver.findElement(By.cssSelector("select[ng-model='Skill']")));
+	    dropdown0.selectByVisibleText("Analytics");
 		
+	    //Selecting country
+		driver.findElement(By.cssSelector("span[tabindex='-1']")).click();
+		driver.findElement(By.cssSelector("input[type='search']")).sendKeys("k");
+		driver.findElement(By.xpath("//li[text()='Hong Kong']")).click();
+		
+		//selecting value from dropdown
+		Select dropdown1 = new Select(driver.findElement(By.id("yearbox")));
+		dropdown1.selectByVisibleText("1998");
+		Select dropdown2 = new Select(driver.findElement(By.cssSelector("select[ng-model='monthbox']")));
+		dropdown2.selectByVisibleText("October");
+		Select dropdown3 = new Select(driver.findElement(By.id("daybox")));
+		dropdown3.selectByVisibleText("15");
+	
+		//password field
 		driver.findElement(By.cssSelector("input[ng-model='Password']")).sendKeys("test@123");
 		driver.findElement(By.cssSelector("input[ng-model='CPassword']")).sendKeys("test@123");
 		
+		//Closing driver 
 		driver.close();
 
 	}
