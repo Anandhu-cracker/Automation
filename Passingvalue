@@ -1,0 +1,38 @@
+package demo;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Valuepass {
+
+	public static void main(String[] args) {
+		
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Pfanandh\\Downloads\\chromedriver-win32\\chromedriver-win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://demo.automationtesting.in/Register.html");
+	    driver.findElement(By.cssSelector("input[placeholder='First Name']")).sendKeys("Anandhu");
+	    driver.findElement(By.cssSelector("input[placeholder='Last Name']")).sendKeys("Purushan");
+	    driver.findElement(By.cssSelector("textarea[rows='3']")).sendKeys("bogainvillae");
+	    driver.findElement(By.cssSelector("input[type='email']")).sendKeys("anandhu@gmail.com");
+	    driver.findElement(By.cssSelector("input[type='tel']")).sendKeys("1234567");
+	    driver.findElement(By.cssSelector("input[value='Male']")).click();
+	    driver.findElement(By.id("checkbox1")).click();
+	    driver.findElement(By.id("checkbox2")).click();
+	    driver.findElement(By.id("msdd")).click();
+	    driver.findElement(By.xpath("//a[text()='Catalan']")).click();
+	    driver.findElement(By.xpath("//a[text()='English']")).click();
+	    driver.findElement(By.xpath("//a[text()='Danish']")).click();
+      driver.findElement(By.cssSelector("select[ng-model='Skill']")).click();
+		//driver.findElement(By)
+	    
+		
+		driver.findElement(By.cssSelector("input[ng-model='Password']")).sendKeys("test@123");
+		driver.findElement(By.cssSelector("input[ng-model='CPassword']")).sendKeys("test@123");
+		
+		driver.close();
+
+	}
+
+}
